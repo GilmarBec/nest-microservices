@@ -1,5 +1,5 @@
 import { ClientProxy, ClientProxyFactory } from '@nestjs/microservices';
-import { ConfigResponse } from './dtos/config.interface';
+import { ConfigResponse } from './dtos/config.dto';
 import { GenerateDefaultOptions } from '../common/proxy.default.options';
 import { Observable } from 'rxjs';
 
