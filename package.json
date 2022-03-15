@@ -1,0 +1,4 @@
+{
+  "private": true,
+  "workspaces": ["gateway", "microservice-config", "microservice-data"]
+}
