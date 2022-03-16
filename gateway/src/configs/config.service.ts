@@ -10,7 +10,7 @@ export class ConfigService {
     this.client = ClientProxyFactory.create(GenerateDefaultOptions(8001));
   }
 
-  public createConfigs(): Observable<ConfigResponse> {
+  public createConfig(): Observable<ConfigResponse> {
     return this.client.send<ConfigResponse, number>('create_config', 1);
   }
 

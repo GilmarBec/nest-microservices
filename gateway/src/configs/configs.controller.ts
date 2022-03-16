@@ -10,7 +10,7 @@ export class ConfigsController {
   @Post('')
   public createAction(@Response() response) {
     this.logger.log('Sending message to create_config');
-    this.configService.createConfigs().subscribe((data) => {
+    this.configService.createConfig().subscribe((data) => {
       response.json(data);
     });
   }
