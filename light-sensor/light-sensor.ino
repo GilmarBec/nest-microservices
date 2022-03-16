@@ -1,18 +1,16 @@
-int pinoLed = 11;
-int pinoSensorLuz = A0;
-int valorLuz = 0;
-bool isLedOn = false;
-String message = "";
-int lightOffIn = 0;
+const unsigned int pinoLed = 11;
+const unsigned int pinoSensorLuz = A0;
 const unsigned int MAX_MESSAGE_LENGTH = 4;
+String response = "";
+unsigned int lightOffIn = 0;
 
 void setup() {
-     pinMode(pinoLed,OUTPUT);
+     pinMode(pinoLed, OUTPUT);
      Serial.begin(9600);
 }
 
 void loop() {
-  valorLuz = analogRead(pinoSensorLuz);
+  unsigned int valorLuz = analogRead(pinoSensorLuz);
 
   while (Serial.available() > 0) {
     static char message[MAX_MESSAGE_LENGTH];
@@ -29,10 +27,10 @@ void loop() {
     }
   }
 
-  isLedOn = valorLuz < lightOffIn;
+  bool isLedOn = valorLuz < lightOffIn;
 
-  message = message + "{\"light\": " + valorLuz + ", \"isLedOn\": " + isLedOn + ", \"lightOffIn\": " + lightOffIn + "}";
-  Serial.println(message);
+  response = response + "{\"light\": " + valorLuz + ", \"isLedOn\": " + isLedOn + ", \"lightOffIn\": " + lightOffIn + "}";
+  Serial.println(response);
 
   if(isLedOn) {
     digitalWrite(pinoLed,HIGH);
@@ -40,7 +38,7 @@ void loop() {
     digitalWrite(pinoLed,LOW);
   }
 
-  message = "";
-  
-  delay(500);                  
+  response = "";
+
+  delay(500);
 }
