@@ -15,6 +15,13 @@ export class ConfigsController {
     return this.configService.create();
   }
 
+  @MessagePattern('update_config')
+  async updateAction(body: string): Promise<Config> {
+    const { id, lightOffIn } = JSON.parse(body);
+    this.logger.log('Called update_config');
+    return this.configService.update(id, lightOffIn);
+  }
+
   @MessagePattern('find_config')
   async getAction(id: string): Promise<Config> {
     this.logger.log('Called find_config');

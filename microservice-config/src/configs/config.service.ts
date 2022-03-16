@@ -14,6 +14,12 @@ export class ConfigService {
     return configEntity.save();
   }
 
+  async update(id: string, lightOffIn: number) {
+    return this.configModel
+      .findByIdAndUpdate(id, { lightOffIn })
+      .then((response) => ({ _id: response._id, lightOffIn }));
+  }
+
   async findOneById(id: string): Promise<Config> {
     return this.configModel.findById(id);
   }

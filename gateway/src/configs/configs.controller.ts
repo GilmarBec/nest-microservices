@@ -1,4 +1,13 @@
-import { Controller, Get, Logger, Param, Post, Response } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Logger,
+  Param,
+  Patch,
+  Post,
+  Response,
+} from '@nestjs/common';
 import { ConfigService } from './config.service';
 
 @Controller('configs')
@@ -11,6 +20,14 @@ export class ConfigsController {
   public createAction(@Response() response) {
     this.logger.log('Sending message to create_config');
     this.configService.createConfig().subscribe((data) => {
+      response.json(data);
+    });
+  }
+
+  @Patch(':id')
+  public updateAction(@Response() response, @Param('id') id, @Body() body) {
+    this.logger.log('Sending message to create_config');
+    this.configService.updateConfig(id, body.lightOffIn).subscribe((data) => {
       response.json(data);
     });
   }

@@ -14,6 +14,13 @@ export class ConfigService {
     return this.client.send<ConfigResponse, number>('create_config', 1);
   }
 
+  public updateConfig(id: string, lightOffIn: number) {
+    return this.client.send<ConfigResponse, string>(
+      'update_config',
+      JSON.stringify({ id, lightOffIn }),
+    );
+  }
+
   public getConfigs(id: string) {
     return this.client.send<ConfigResponse, string>('find_config', id);
   }
