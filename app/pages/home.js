@@ -4,7 +4,6 @@ import client from '../Providers/client';
 import { CONFIG_ID } from '../configs/env';
 
 export default function Home() {
-  //isLoading
   const [lightOffIn, setLightOffIn] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
 
@@ -12,6 +11,8 @@ export default function Home() {
     findConfig().then((response) => {
       setLightOffIn(response.lightOffIn);
       setIsLoading(false);
+    }).catch(exception => {
+        alert(`Error: ${exception.message}`);
     });
 
     return (
@@ -27,15 +28,13 @@ export default function Home() {
     );
   }
 
-  return (<View style={{margin: 20}}>
+  return (<View style={{margin: 20, marginTop: 200}}>
     <Text style={styles.title} >Sensor de Luminosidade [Valor Atual {lightOffIn}]</Text>
     <TextInput
-      placeholder={`lightOffIn:`}
+      placeholder={` Light off in:`}
       keyboardType={'numeric'}
       onChangeText={text=>setLightOffIn(text)}
-      defaultValue={lightOffIn}
       style={{borderWidth: 2, borderColor: 'skyblue', margin: 20}}
-      value={lightOffIn}
       />
 
     <Button title="Atualizar" onPress={() => updateConfig(lightOffIn)} />
