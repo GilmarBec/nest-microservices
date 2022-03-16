@@ -8,7 +8,7 @@ export class ConfigService {
 
   async create() {
     const configEntity = new this.configModel({
-      value: 'test',
+      lightOffIn: 500,
     });
 
     return configEntity.save();

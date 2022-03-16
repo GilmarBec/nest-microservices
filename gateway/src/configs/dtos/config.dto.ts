@@ -1,8 +1,7 @@
 export interface ConfigRequest {
-  value: number;
+  lightOffIn: number;
 }
 
-export interface ConfigResponse {
+export interface ConfigResponse extends ConfigRequest {
   _id: string;
-  value: number;
 }

@@ -17,6 +17,13 @@ export class MessageService {
     );
   }
 
+  findAllMessages(limit = 100): Observable<MessageResponse[]> {
+    return this.client.send<MessageResponse[], number>(
+      'find_all_messages',
+      limit,
+    );
+  }
+
   findMessage(id: string): Observable<MessageResponse> {
     return this.client.send<MessageResponse, string>('find_message', id);
   }

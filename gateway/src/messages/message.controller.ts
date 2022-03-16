@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Param, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, Res } from '@nestjs/common';
 import { MessageService } from './message.service';
 import { Response } from 'express';
 
@@ -11,6 +11,13 @@ export class MessageController {
     this.messageService
       .createMessage(message)
       .subscribe((message) => request.status(201).json(message));
+  }
+
+  @Get('')
+  findAllAction(@Res() request: Response, @Query('limit') limit = 100) {
+    this.messageService.findAllMessages(limit).subscribe((messages) => {
+      request.json(messages);
+    });
   }
 
   @Get(':id')

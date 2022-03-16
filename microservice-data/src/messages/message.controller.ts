@@ -15,8 +15,14 @@ export class MessageController {
     return this.messageService.create(data);
   }
 
+  @MessagePattern('find_all_messages')
+  async findAllAction(limit?: number): Promise<Message[]> {
+    this.logger.log('Called find_all_messages');
+    return this.messageService.findAll(limit);
+  }
+
   @MessagePattern('find_message')
-  async getAction(id: string): Promise<Message> {
+  async findAction(id: string): Promise<Message> {
     this.logger.log('Called find_message');
     return this.messageService.findOneById(id);
   }

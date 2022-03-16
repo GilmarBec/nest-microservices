@@ -1,5 +1,7 @@
 export interface Message {
   _id?: string;
   timestamp: number;
-  message: string;
+  light: number;
+  isLedOn: boolean;
+  lightOffIn: number;
 }
