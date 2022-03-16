@@ -15,7 +15,7 @@ port.on("open", () => {
     )
 
     const parser = port.pipe(new ReadlineParser({ delimiter: '\n' }));
-    parser.on('data', data =>{
+    parser.on('data', data => {
       try{
         messageService.sendMessage(JSON.parse(data)).catch(console.error);
       }catch (e) {

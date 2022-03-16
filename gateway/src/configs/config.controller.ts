@@ -11,7 +11,7 @@ import {
 import { ConfigService } from './config.service';
 
 @Controller('configs')
-export class ConfigsController {
+export class ConfigController {
   private logger = new Logger('ConfigsController');
 
   constructor(private configService: ConfigService) {}
@@ -26,7 +26,7 @@ export class ConfigsController {
 
   @Patch(':id')
   public updateAction(@Response() response, @Param('id') id, @Body() body) {
-    this.logger.log('Sending message to create_config');
+    this.logger.log('Sending message to update_config');
     this.configService.updateConfig(id, body.lightOffIn).subscribe((data) => {
       response.json(data);
     });
