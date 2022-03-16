@@ -1,0 +1,17 @@
+{
+  "name": "serial-adapter",
+  "version": "1.0.0",
+  "main": "src/index.ts",
+  "author": "Gilmar Bec",
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.ts",
+    "dev": "nodemon src/index.ts"
+  },
+  "dependencies": {
+    "@serialport/parser-readline": "^10.3.0",
+    "axios": "^0.26.1",
+    "dotenv": "^16.0.0",
+    "serialport": "^10.4.0"
+  }
+}
