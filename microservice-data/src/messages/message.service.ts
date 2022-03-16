@@ -16,7 +16,7 @@ export class MessageService {
   }
 
   async findAll(limit = 100): Promise<Message[]> {
-    return this.configModel.find().limit(limit);
+    return this.configModel.find().limit(limit).sort({ timestamp: 'desc' });
   }
 
   async findOneById(id: string): Promise<Message> {
